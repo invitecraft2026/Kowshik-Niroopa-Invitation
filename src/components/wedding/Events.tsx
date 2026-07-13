@@ -7,7 +7,7 @@ const events = [
     tag: "Ceremony I",
     title: "Engagement",
     date: "Saturday · 6 September",
-    time: "Evening",
+    time: "7pm - onwards",
     location: "Grand Empire Convention Hall, Trichy",
   },
   {

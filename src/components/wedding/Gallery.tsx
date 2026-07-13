@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import { SectionHeading } from "./SectionHeading";
-import g1 from "@/assets/gallery-1.jpg";
-import g2 from "@/assets/gallery-2.jpg";
-import g3 from "@/assets/gallery-3.jpg";
-import g4 from "@/assets/story-hands.jpg";
-import g5 from "@/assets/venue.jpg";
-import g6 from "@/assets/mandala-bg.jpg";
+import g1 from "@/assets/image-1.jpeg";
+import g2 from "@/assets/image-2.jpeg";
+import g3 from "@/assets/image-3.jpeg";
+import g4 from "@/assets/image-4.jpeg";
+import g5 from "@/assets/image-5.jpeg";
+import g6 from "@/assets/image-6.jpeg";
 
 const images = [
   { src: g1, caption: "Jasmine & marigold", span: "row-span-2" },
@@ -13,7 +13,7 @@ const images = [
   { src: g3, caption: "Silk in blush", span: "row-span-2" },
   { src: g4, caption: "Bound together", span: "" },
   { src: g5, caption: "The venue awaits", span: "col-span-2" },
-  { src: g6, caption: "Blessings in gold", span: "" },
+  // { src: g6, caption: "Blessings in gold", span: "" },
 ];
 
 export function Gallery() {

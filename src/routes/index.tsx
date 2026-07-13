@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { LoadingScreen } from "@/components/wedding/LoadingScreen";
-import { TapToOpen } from "@/components/wedding/TapToOpen";
+import { OpeningExperience } from "@/components/wedding/OpeningExperience";
 import { Hero } from "@/components/wedding/Hero";
 import { Countdown } from "@/components/wedding/Countdown";
 import { OurStory } from "@/components/wedding/OurStory";
@@ -14,6 +14,7 @@ import { Venue } from "@/components/wedding/Venue";
 import { RSVP } from "@/components/wedding/RSVP";
 import { ThankYou } from "@/components/wedding/ThankYou";
 import { MusicPlayer } from "@/components/wedding/MusicPlayer";
+import { ScratchReveal } from "@/components/wedding/ScratchReveal";
 
 export const Route = createFileRoute("/")({
   component: Invitation,
@@ -36,8 +37,8 @@ function Invitation() {
 
   return (
     <>
-      {!loaded && <LoadingScreen onDone={() => setLoaded(true)} />}
-      {loaded && <TapToOpen open={opened} onOpen={() => setOpened(true)} />}
+      {/* {!loaded && <LoadingScreen onDone={() => setLoaded(true)} />} */}
+      { !opened && <OpeningExperience onComplete={() => setOpened(true)} />}
 
       <AnimatePresence>
         {opened && (
@@ -49,12 +50,13 @@ function Invitation() {
           >
             <Hero />
             <Countdown />
-            <OurStory />
+            <ScratchReveal/>
+            {/* <OurStory /> */}
             <Quote />
             <Events />
             <Gallery />
             <Venue />
-            <RSVP />
+            {/* <RSVP /> */}
             <ThankYou />
 
             <footer className="border-t border-rose-gold/20 py-10 text-center text-[10px] tracking-[0.4em] text-deep-brown/50 uppercase">

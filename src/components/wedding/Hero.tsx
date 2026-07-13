@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroEndFrame from "@/assets/hero-end-frame.jpg"; // ← last frame of the opening video
 import { FloatingPetals } from "./FloatingPetals";
 import { Ornament } from "./Ornament";
 import { ChevronDown } from "lucide-react";
@@ -15,7 +15,7 @@ export function Hero() {
   return (
     <section ref={ref} className="relative flex min-h-screen items-center justify-center overflow-hidden">
       <motion.div
-        style={{ y, scale, backgroundImage: `url(${heroBg})` }}
+        style={{ y, scale, backgroundImage: `url(${heroEndFrame})` }}
         className="absolute inset-0 bg-cover bg-center"
       />
       <div
@@ -36,10 +36,7 @@ export function Hero() {
       </motion.div>
       <FloatingPetals count={24} />
 
-      <motion.div
-        style={{ opacity }}
-        className="relative z-10 px-6 text-center"
-      >
+      <motion.div style={{ opacity }} className="relative z-10 px-6 text-center">
         <motion.p
           initial={{ opacity: 0, y: 30, filter: "blur(20px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -60,6 +57,15 @@ export function Hero() {
           Niroopa
         </motion.h1>
 
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.1, duration: 0.9 }}
+          className="mt-1 font-serif text-xs italic text-deep-brown/60 md:text-sm"
+        >
+          D/O Mr. Vijayakumar &amp; Mrs. Sujatha
+        </motion.p>
+
         <motion.div
           initial={{ opacity: 0, scale: 0.5, rotate: -30 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -77,6 +83,15 @@ export function Hero() {
         >
           Kowshik
         </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.5, duration: 0.9 }}
+          className="mt-1 font-serif text-xs italic text-deep-brown/60 md:text-sm"
+        >
+          S/O Mr. Durai Murugan &amp; Mrs. Kayalvizhi
+        </motion.p>
 
         <Ornament className="mx-auto mt-8 h-8 w-64 opacity-80" />
 

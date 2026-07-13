@@ -162,3 +162,6 @@
     background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--rose-gold) 60%, transparent), transparent);
   }
 }
+html, body {
+  background-color: var(--warm-white);
+}
