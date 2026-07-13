@@ -1,16 +1,24 @@
+// src/components/wedding/MusicPlayer.tsx
 import { motion } from "framer-motion";
 import { Music, VolumeX } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import backgroundMusic from "@/assets/i found you.mp3";
 
-/**
- * Ambient Web Audio drone — no external file needed. Renders a very soft,
- * temple-inspired shruti-style pad using two detuned sine oscillators.
- */
 export function MusicPlayer({ autostart }: { autostart: boolean }) {
   const [on, setOn] = useState(false);
-  const ctxRef = useRef<AudioContext | null>(null);
-  const gainRef = useRef<GainNode | null>(null);
-  const oscsRef = useRef<OscillatorNode[]>([]);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  // Lazily create the audio element once
+  useEffect(() => {
+    const audio = new Audio(backgroundMusic);
+    audio.loop = true;
+    audio.volume = 0; // fade in manually below
+    audioRef.current = audio;
+    return () => {
+      audio.pause();
+      audioRef.current = null;
+    };
+  }, []);
 
   useEffect(() => {
     if (autostart && !on) setOn(true);
@@ -18,44 +26,36 @@ export function MusicPlayer({ autostart }: { autostart: boolean }) {
   }, [autostart]);
 
   useEffect(() => {
-    if (!on) {
-      if (ctxRef.current) {
-        gainRef.current?.gain.exponentialRampToValueAtTime(0.0001, ctxRef.current.currentTime + 0.6);
-        setTimeout(() => {
-          oscsRef.current.forEach((o) => o.stop());
-          oscsRef.current = [];
-          ctxRef.current?.close();
-          ctxRef.current = null;
-          gainRef.current = null;
-        }, 700);
-      }
-      return;
-    }
-    try {
-      const AC = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-      const ctx = new AC();
-      const gain = ctx.createGain();
-      gain.gain.value = 0.0001;
-      gain.connect(ctx.destination);
+    const audio = audioRef.current;
+    if (!audio) return;
 
-      const freqs = [110, 110 * 1.5, 220]; // Sa – Pa – Sa drone
-      const oscs = freqs.map((f, i) => {
-        const o = ctx.createOscillator();
-        o.type = i === 2 ? "triangle" : "sine";
-        o.frequency.value = f;
-        const g = ctx.createGain();
-        g.gain.value = i === 2 ? 0.15 : 0.35;
-        o.connect(g).connect(gain);
-        o.start();
-        return o;
-      });
-
-      gain.gain.exponentialRampToValueAtTime(0.06, ctx.currentTime + 1.8);
-      ctxRef.current = ctx;
-      gainRef.current = gain;
-      oscsRef.current = oscs;
-    } catch {
-      /* audio blocked */
+    if (on) {
+      audio
+        .play()
+        .then(() => {
+          // Smooth fade-in instead of an abrupt start
+          let v = 0;
+          const step = () => {
+            v = Math.min(0.35, v + 0.02);
+            audio.volume = v;
+            if (v < 0.35) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+        })
+        .catch(() => {
+          // Autoplay blocked (e.g. no prior user gesture) — user can tap the button to retry
+          setOn(false);
+        });
+    } else {
+      // Fade out, then pause
+      let v = audio.volume;
+      const step = () => {
+        v = Math.max(0, v - 0.03);
+        audio.volume = v;
+        if (v > 0) requestAnimationFrame(step);
+        else audio.pause();
+      };
+      requestAnimationFrame(step);
     }
   }, [on]);
 
