@@ -53,29 +53,84 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Kowshik & Niroopa · A Wedding Invitation" },
-      { name: "description", content: "Together with their families, Kowshik Raj & Niroopa Vijayakumar invite you to celebrate their engagement and wedding on 6–7 September in Trichy." },
-      { name: "author", content: "Kowshik & Niroopa" },
-      { property: "og:title", content: "Kowshik & Niroopa · A Wedding Invitation" },
-      { property: "og:description", content: "Celebrate our engagement & wedding — 6–7 September, Grand Empire Convention Hall, Trichy." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [
-      { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Manrope:wght@300;400;500;600&display=swap",
-      },
-    ],
-  }),
+ head: () => ({
+  meta: [
+    { charSet: "utf-8" },
+    { name: "viewport", content: "width=device-width, initial-scale=1" },
+
+    { title: "Kowshik & Niroopa · A Wedding Invitation" },
+    {
+      name: "description",
+      content:
+        "Together with their families, Kowshik Raj & Niroopa Vijayakumar invite you to celebrate their engagement and wedding on 6–7 September in Trichy.",
+    },
+
+    // Open Graph
+    {
+      property: "og:title",
+      content: "Kowshik & Niroopa · A Wedding Invitation",
+    },
+    {
+      property: "og:description",
+      content:
+        "Celebrate our Engagement & Wedding — 6–7 September at Grand Empire Convention Hall, Trichy.",
+    },
+    {
+      property: "og:image",
+      content: " https://kowshik-niroopa-invitation.invitecraft2026.workers.dev/image-6.jpeg",
+    },
+    {
+      property: "og:image:width",
+      content: "1200",
+    },
+    {
+      property: "og:image:height",
+      content: "630",
+    },
+    {
+      property: "og:url",
+      content: " https://kowshik-niroopa-invitation.invitecraft2026.workers.dev/image-6.jpeg",
+    },
+    {
+      property: "og:type",
+      content: "website",
+    },
+
+    // Twitter
+    {
+      name: "twitter:card",
+      content: "summary_large_image",
+    },
+    {
+      name: "twitter:title",
+      content: "Kowshik & Niroopa · A Wedding Invitation",
+    },
+    {
+      name: "twitter:description",
+      content:
+        "Celebrate our Engagement & Wedding — 6–7 September in Trichy.",
+    },
+    {
+      name: "twitter:image",
+      content: " https://kowshik-niroopa-invitation.invitecraft2026.workers.dev/image-6.jpeg",
+    },
+  ],
+
+  links: [
+    { rel: "stylesheet", href: appCss },
+    { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+    { rel: "preconnect", href: "https://fonts.googleapis.com" },
+    {
+      rel: "preconnect",
+      href: "https://fonts.gstatic.com",
+      crossOrigin: "anonymous",
+    },
+    {
+      rel: "stylesheet",
+      href: "https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Manrope:wght@300;400;500;600&display=swap",
+    },
+  ],
+}),
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
