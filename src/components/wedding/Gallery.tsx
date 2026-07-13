@@ -5,8 +5,6 @@ import g2 from "@/assets/image-2.jpeg";
 import g3 from "@/assets/image-3.jpeg";
 import g4 from "@/assets/image-4.jpeg";
 import g5 from "@/assets/image-5.jpeg";
-import g6 from "@/assets/image-6.jpeg";
-
 const images = [
   { src: g1, caption: "Jasmine & marigold", span: "row-span-2" },
   { src: g2, caption: "Sacred deepam", span: "" },
