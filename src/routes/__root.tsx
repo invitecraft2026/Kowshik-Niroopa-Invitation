@@ -77,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     },
     {
       property: "og:image",
-      content: " https://kowshik-niroopa-invitation.invitecraft2026.workers.dev/image-6.jpeg",
+      content: "https://kowshik-niroopa-invitation.invitecraft2026.workers.dev/image-6.jpeg",
     },
     {
       property: "og:image:width",
@@ -89,7 +89,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     },
     {
       property: "og:url",
-      content: " https://kowshik-niroopa-invitation.invitecraft2026.workers.dev/image-6.jpeg",
+      content: "https://kowshik-niroopa-invitation.invitecraft2026.workers.dev/image-6.jpeg",
     },
     {
       property: "og:type",
@@ -112,7 +112,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     },
     {
       name: "twitter:image",
-      content: " https://kowshik-niroopa-invitation.invitecraft2026.workers.dev/image-6.jpeg",
+      content: "https://kowshik-niroopa-invitation.invitecraft2026.workers.dev/image-6.jpeg",
     },
   ],
 
