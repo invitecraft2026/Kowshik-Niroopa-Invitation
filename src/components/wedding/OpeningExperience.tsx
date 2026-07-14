@@ -1,9 +1,9 @@
 // src/components/wedding/OpeningExperience.tsx
 import { motion, AnimatePresence } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
-import coverImg from "@/assets/cover.png";
-import openingVideo from "@/assets/opening.mp4";
-import heroEndFrame from "@/assets/hero-end-frame.jpg";
+import coverImg from "@/assets/cover-image.png";
+import openingVideo from "@/assets/opening-video.mp4";
+import heroEndFrame from "@/assets/end_frame.jpg";
 
 type Phase = "cover" | "video" | "exiting";
 

@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Ornament } from "./Ornament";
+import coupleSecondary from "@/assets/image-1.jpeg";
 
 const HEART_PATH =
   "M130,225 C130,225 20,145 20,80 C20,45 45,18 80,18 C102,18 120,32 130,50 C140,32 158,18 180,18 C215,18 240,45 240,80 C240,145 130,225 130,225 Z";
@@ -22,9 +23,6 @@ export function ScratchReveal() {
 
     ctx.clearRect(0, 0, width, height);
     ctx.save();
-    // Clip all painting to the heart shape directly on the canvas —
-    // this replaces CSS clip-path, which some browsers (notably
-    // Safari/iOS) fail to hit-test correctly, blocking pointer events.
     ctx.clip(heartPath.current);
 
     const styles = getComputedStyle(document.documentElement);
@@ -39,7 +37,6 @@ export function ScratchReveal() {
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, width, height);
 
-    // Glitter speckles
     for (let i = 0; i < 260; i++) {
       const x = Math.random() * width;
       const y = Math.random() * height;
@@ -50,7 +47,6 @@ export function ScratchReveal() {
       ctx.fill();
     }
 
-    // Subtle highlight sheen
     const sheen = ctx.createLinearGradient(0, 0, width, height * 0.6);
     sheen.addColorStop(0, "rgba(255,255,255,0.25)");
     sheen.addColorStop(0.4, "rgba(255,255,255,0)");
@@ -85,7 +81,6 @@ export function ScratchReveal() {
     const ctx = canvasRef.current?.getContext("2d");
     if (!ctx) return;
     ctx.save();
-    // Keep erasing confined to the heart, same as the painted texture.
     ctx.clip(heartPath.current);
     ctx.globalCompositeOperation = "destination-out";
     ctx.beginPath();
@@ -130,8 +125,26 @@ export function ScratchReveal() {
   };
 
   return (
-    <section className="relative overflow-hidden py-24" style={{ background: "var(--cream)" }}>
-      <div className="mx-auto flex max-w-md flex-col items-center px-6 text-center">
+    <section className="relative overflow-hidden py-24">
+      {/* Soft couple photo backdrop */}
+      <div className="pointer-events-none absolute inset-0">
+        <img
+          src={coupleSecondary}
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full object-cover"
+          style={{ objectPosition: "50% 15%", opacity: 0.16 }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, var(--cream) 0%, color-mix(in oklab, var(--cream) 45%, transparent) 22%, color-mix(in oklab, var(--cream) 45%, transparent) 78%, var(--cream) 100%)",
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 mx-auto flex max-w-md flex-col items-center px-6 text-center">
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -166,7 +179,6 @@ export function ScratchReveal() {
             filter: "drop-shadow(0 12px 24px color-mix(in oklab, var(--rose-gold) 35%, transparent))",
           }}
         >
-          {/* Revealed content underneath, clipped to heart (non-interactive, so CSS clip-path is safe here) */}
           <motion.div
             className="absolute inset-0 flex flex-col items-center justify-center"
             style={{
@@ -176,14 +188,10 @@ export function ScratchReveal() {
             animate={revealed ? { scale: [1, 1.04, 1] } : {}}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            {/* <span className="font-display text-[9px] tracking-[0.4em] text-rose-gold uppercase">
-              Save the Date
-            </span> */}
             <span className="mt-2 font-serif text-2xl text-deep-brown">6 &amp; 7</span>
             <span className="font-serif text-lg italic text-deep-brown/80">September 2026</span>
           </motion.div>
 
-          {/* Scratch canvas on top — a full rectangular hit area; the heart shape is baked into the pixels, not CSS */}
           <motion.canvas
             ref={canvasRef}
             onPointerDown={handlePointerDown}

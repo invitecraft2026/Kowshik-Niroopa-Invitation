@@ -33,7 +33,9 @@ export function Gallery() {
               src={im.src}
               alt={im.caption}
               loading="lazy"
-              className="h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-110"
+              className={`h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-110 ${
+                i === 4 ? "object-top" : "object-center"
+              }`}
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-deep-brown/70 via-transparent to-transparent opacity-70" />
             <figcaption className="absolute bottom-4 left-4 font-serif italic text-warm-white opacity-0 transition-opacity duration-500 group-hover:opacity-100">

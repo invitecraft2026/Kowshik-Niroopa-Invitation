@@ -149,6 +149,12 @@
   50% { transform: translate(20px, -30px); }
 }
 
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%) skewX(-12deg);
+  }
+}
+
 @utility divider-ornament {
   display: flex;
   align-items: center;

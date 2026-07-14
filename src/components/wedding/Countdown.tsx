@@ -1,6 +1,7 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { SectionHeading } from "./SectionHeading";
+import coupleCountdown from "@/assets/couple-countdown.jpg";
 
 const TARGET = new Date("2026-09-07T09:00:00+05:30").getTime();
 
@@ -16,6 +17,7 @@ function diff(now: number) {
 
 export function Countdown() {
   const [t, setT] = useState(() => diff(TARGET));
+  
   useEffect(() => {
     setT(diff(Date.now()));
     const id = setInterval(() => setT(diff(Date.now())), 1000);
@@ -30,29 +32,89 @@ export function Countdown() {
   ];
 
   return (
-    <section className="relative py-32 px-6">
-      <SectionHeading eyebrow="The Sacred Day Awaits" title="Counting the Moments" />
-      <div className="mx-auto mt-16 grid max-w-4xl grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
-        {items.map((it, i) => (
-          <motion.div
-            key={it.label}
-            initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.9, delay: i * 0.1, ease: [0.19, 1, 0.22, 1] }}
-            className="glass gold-border relative overflow-hidden rounded-2xl px-4 py-8 text-center md:py-12"
-          >
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-temple-gold to-transparent" />
-            <div
-              key={it.v}
-              className="font-serif text-5xl text-deep-brown md:text-7xl"
-              style={{ animation: "shine-sweep 0.6s ease" }}
+    <section className="relative overflow-hidden py-28 md:py-48 px-6 bg-[var(--cream)]">
+      {/* Luxury Immersive Backdrop */}
+      <div className="pointer-events-none absolute inset-0 select-none">
+        <img
+          src={coupleCountdown}
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full object-cover mix-blend-luminosity"
+          style={{ objectPosition: "50% 25%", opacity: 0.08 }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, var(--cream) 0%, color-mix(in oklab, var(--cream) 40%, transparent) 30%, color-mix(in oklab, var(--cream) 40%, transparent) 70%, var(--cream) 100%)",
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 max-w-5xl mx-auto">
+        <SectionHeading eyebrow="The Sacred Day Awaits" title="Counting the Moments" />
+        
+        {/* Luxury Open Architectural Grid Layout */}
+        <div className="mt-20 md:mt-32 grid grid-cols-2 lg:grid-cols-4 gap-y-16 lg:gap-y-0 relative">
+          
+          {/* Subtle horizontal luxury anchor line for large viewports */}
+          <div className="absolute left-0 right-0 top-1/2 h-px bg-gradient-to-r from-transparent via-[var(--rose-gold)]/20 to-transparent hidden lg:block -translate-y-6" />
+
+          {items.map((it, i) => (
+            <motion.div
+              key={it.label}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 1.2, delay: i * 0.1, ease: [0.19, 1, 0.22, 1] }}
+              className="group relative flex flex-col items-center justify-center text-center px-4"
             >
-              {String(it.v).padStart(2, "0")}
-            </div>
-            <div className="mt-2 text-[10px] tracking-[0.4em] text-rose-gold uppercase">{it.label}</div>
-          </motion.div>
-        ))}
+              {/* Floating Dynamic Arc Behind Numbers (Desktop Only) */}
+              <div className="absolute -top-6 w-32 h-32 rounded-full border border-dashed border-[var(--rose-gold)]/15 scale-75 opacity-0 group-hover:opacity-100 group-hover:scale-110 pointer-events-none transition-all duration-700 ease-out hidden md:block" />
+
+              {/* Decorative Top Luxury Diamond Accent */}
+              <div className="mb-4 text-[7px] tracking-widest text-[var(--rose-gold)]/50 transition-transform duration-500 group-hover:scale-125">
+                ✦
+              </div>
+
+              {/* Ultra-Refined Minimal Serif Display Numbers */}
+              <div className="relative h-16 sm:h-20 md:h-24 flex items-center justify-center select-none overflow-hidden w-full">
+                <AnimatePresence mode="popLayout">
+                  <motion.span
+                    key={it.v}
+                    initial={{ y: 35, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -35, opacity: 0 }}
+                    transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+                    className="font-serif text-5xl sm:text-6xl md:text-7xl font-light tracking-tighter text-[var(--deep-brown)]"
+                  >
+                    {String(it.v).padStart(2, "0")}
+                  </motion.span>
+                </AnimatePresence>
+              </div>
+
+              {/* Micro-Geometric Accent Line */}
+              <div className="h-px w-6 my-4 bg-gradient-to-r from-transparent via-[var(--rose-gold)] to-transparent transition-all duration-500 group-hover:w-16" />
+
+              {/* Editorial Captions */}
+              <div className="text-[10px] md:text-[11px] font-light tracking-[0.4em] text-[var(--rose-gold)] uppercase transition-colors duration-300 group-hover:text-[var(--deep-brown)] pl-[0.4em]">
+                {it.label}
+              </div>
+
+              {/* Subtle Vertical Border Dividers between columns (Desktop Only) */}
+              {i < 3 && (
+                <div className="absolute right-0 top-4 bottom-4 w-px bg-gradient-to-b from-transparent via-[var(--rose-gold)]/20 to-transparent hidden lg:block" />
+              )}
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Grand Final Ornament Base */}
+        <div className="mt-20 md:mt-28 flex justify-center items-center gap-4 opacity-40">
+          <div className="h-px w-16 bg-gradient-to-r from-transparent to-[var(--rose-gold)]" />
+          <span className="text-xs text-[var(--rose-gold)]">⚜</span>
+          <div className="h-px w-16 bg-gradient-to-l from-transparent to-[var(--rose-gold)]" />
+        </div>
       </div>
     </section>
   );

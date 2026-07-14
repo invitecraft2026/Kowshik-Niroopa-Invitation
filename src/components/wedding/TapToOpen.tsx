@@ -2,8 +2,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Sparkles, Volume2, VolumeX } from "lucide-react";
-import coverImg from "@/assets/cover.png";
-import openingVideo from "@/assets/opening.mp4";
+import coverImg from "@/assets/cover-image.png";
+import openingVideo from "@/assets/opening-video.mp4";
 import { FloatingPetals } from "./FloatingPetals";
 import { Ornament } from "./Ornament";
 
@@ -110,8 +110,9 @@ export function OpeningExperience({ onComplete }: { onComplete: () => void }) {
                     onClick={handleOpen}
                     className="group relative mt-10 inline-flex items-center gap-3 overflow-hidden rounded-full px-10 py-4 text-warm-white uppercase tracking-[0.35em] text-[11px]"
                     style={{
-                      background: "linear-gradient(135deg, var(--rose-gold), var(--deep-brown))",
-                      boxShadow: "0 20px 40px -12px color-mix(in oklab, var(--rose-gold) 70%, transparent)",
+                      background: "linear-gradient(135deg, #8D5A5A 0%, #6F4747 45%, #4A2E2E 100%)",
+                      boxShadow: "0 18px 35px rgba(74, 46, 46, 0.45)",
+                      border: "1px solid rgba(212, 175, 55, 0.25)",
                     }}
                   >
                     <Sparkles className="h-3.5 w-3.5" />

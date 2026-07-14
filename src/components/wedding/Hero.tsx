@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import heroEndFrame from "@/assets/hero-end-frame.jpg"; // ← last frame of the opening video
+import heroEndFrame from "@/assets/end_frame.jpg"; // ← last frame of the opening video
 import { FloatingPetals } from "./FloatingPetals";
 import { Ornament } from "./Ornament";
 import { ChevronDown } from "lucide-react";
@@ -13,18 +13,20 @@ export function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
-    <section ref={ref} className="relative flex min-h-screen items-center justify-center overflow-hidden">
+    <section
+      ref={ref}
+      className="relative flex min-h-screen items-center justify-center overflow-hidden"
+    >
       <motion.div
         style={{ y, scale, backgroundImage: `url(${heroEndFrame})` }}
         className="absolute inset-0 bg-cover bg-center"
       />
       <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(180deg, color-mix(in oklab, var(--warm-white) 40%, transparent), color-mix(in oklab, var(--warm-white) 20%, transparent) 40%, var(--warm-white))",
-        }}
-      />
+  className="absolute inset-0 bg-gradient-to-b
+    from-white/25
+    via-white/40
+    to-warm-white/95"
+/>
       <motion.div className="absolute inset-0" style={{ opacity }}>
         <div
           className="absolute inset-0"
@@ -38,12 +40,12 @@ export function Hero() {
 
       <motion.div style={{ opacity }} className="relative z-10 px-6 text-center">
         <motion.p
-          initial={{ opacity: 0, y: 30, filter: "blur(20px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 1.2, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
-          className="font-display text-[10px] tracking-[0.6em] text-rose-gold uppercase"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.1 }}
+          className="font-serif text-sm md:text-base tracking-[0.25em] uppercase text-rose-gold font-medium"
         >
-          Save the Date · 06.09 — 07.09
+          We Are Getting Married
         </motion.p>
 
         <Ornament className="mx-auto mt-6 h-8 w-64 opacity-80" />
@@ -61,7 +63,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.1, duration: 0.9 }}
-          className="mt-1 font-serif text-xs italic text-deep-brown/60 md:text-sm"
+          className="mt-1 font-serif text-xs italic text-deep-brown/90 drop-shadow-md md:text-sm"
         >
           D/O Mr. Vijayakumar &amp; Mrs. Sujatha
         </motion.p>
@@ -81,14 +83,14 @@ export function Hero() {
           transition={{ duration: 1.8, delay: 0.9, ease: [0.19, 1, 0.22, 1] }}
           className="font-serif text-[clamp(3rem,10vw,8rem)] leading-[0.95] text-deep-brown"
         >
-          Kowshik
+          Kowshik Raj
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5, duration: 0.9 }}
-          className="mt-1 font-serif text-xs italic text-deep-brown/60 md:text-sm"
+          className="mt-1 font-serif text-xs italic text-deep-brown/90 drop-shadow-md md:text-sm"
         >
           S/O Mr. Durai Murugan &amp; Mrs. Kayalvizhi
         </motion.p>
@@ -99,7 +101,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.8, duration: 1 }}
-          className="mt-6 font-serif text-lg italic text-deep-brown/80"
+          className="mt-8 font-serif text-xl italic text-deep-brown drop-shadow-lg md:text-2xl"
         >
           Two souls · One celebration · Engagement &amp; Wedding
         </motion.p>
