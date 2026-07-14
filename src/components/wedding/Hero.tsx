@@ -43,11 +43,10 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.1 }}
-          className="font-serif text-sm md:text-base tracking-[0.25em] uppercase text-rose-gold font-semibold"
+          className="inline-block rounded-full px-5 py-2 font-serif text-sm md:text-base tracking-[0.25em] uppercase text-deep-brown font-semibold backdrop-blur-sm"
           style={{
-            filter: "brightness(1.4) saturate(1.3)",
-            textShadow:
-              "0 0 12px color-mix(in oklab, var(--rose-gold, currentColor) 60%, transparent), 0 1px 2px rgba(0,0,0,0.15)",
+            background: "color-mix(in oklab, var(--warm-white, #fff) 55%, transparent)",
+            boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
           }}
         >
           We Are Getting Married
