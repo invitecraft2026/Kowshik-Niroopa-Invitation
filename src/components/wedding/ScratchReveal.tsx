@@ -127,19 +127,19 @@ export function ScratchReveal() {
   return (
     <section className="relative overflow-hidden py-24">
       {/* Soft couple photo backdrop */}
+      {/* Soft couple photo backdrop */}
       <div className="pointer-events-none absolute inset-0">
         <img
           src={coupleSecondary}
           alt=""
           aria-hidden="true"
-          className="h-full w-full object-cover"
-          style={{ objectPosition: "50% 15%", opacity: 0.16 }}
+          className="h-full w-full object-cover opacity-[0.32]"
         />
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, var(--cream) 0%, color-mix(in oklab, var(--cream) 45%, transparent) 22%, color-mix(in oklab, var(--cream) 45%, transparent) 78%, var(--cream) 100%)",
+              "linear-gradient(180deg, var(--cream) 0%, color-mix(in oklab, var(--cream) 25%, transparent) 22%, color-mix(in oklab, var(--cream) 25%, transparent) 78%, var(--cream) 100%)",
           }}
         />
       </div>
@@ -176,7 +176,8 @@ export function ScratchReveal() {
           style={{
             width: HEART_W,
             height: HEART_H,
-            filter: "drop-shadow(0 12px 24px color-mix(in oklab, var(--rose-gold) 35%, transparent))",
+            filter:
+              "drop-shadow(0 12px 24px color-mix(in oklab, var(--rose-gold) 35%, transparent))",
           }}
         >
           <motion.div

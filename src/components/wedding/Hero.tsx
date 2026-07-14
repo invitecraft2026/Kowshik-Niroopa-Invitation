@@ -22,11 +22,11 @@ export function Hero() {
         className="absolute inset-0 bg-cover bg-center"
       />
       <div
-  className="absolute inset-0 bg-gradient-to-b
+        className="absolute inset-0 bg-gradient-to-b
     from-white/25
     via-white/40
     to-warm-white/95"
-/>
+      />
       <motion.div className="absolute inset-0" style={{ opacity }}>
         <div
           className="absolute inset-0"
@@ -43,7 +43,12 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.1 }}
-          className="font-serif text-sm md:text-base tracking-[0.25em] uppercase text-rose-gold font-medium"
+          className="font-serif text-sm md:text-base tracking-[0.25em] uppercase text-rose-gold font-semibold"
+          style={{
+            filter: "brightness(1.4) saturate(1.3)",
+            textShadow:
+              "0 0 12px color-mix(in oklab, var(--rose-gold, currentColor) 60%, transparent), 0 1px 2px rgba(0,0,0,0.15)",
+          }}
         >
           We Are Getting Married
         </motion.p>
@@ -63,7 +68,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.1, duration: 0.9 }}
-          className="mt-1 font-serif text-xs italic text-deep-brown/90 drop-shadow-md md:text-sm"
+          className="mt-1 font-serif text-sm italic text-deep-brown/90 drop-shadow-md md:text-base"
         >
           D/O Mr. Vijayakumar &amp; Mrs. Sujatha
         </motion.p>
@@ -90,7 +95,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5, duration: 0.9 }}
-          className="mt-1 font-serif text-xs italic text-deep-brown/90 drop-shadow-md md:text-sm"
+          className="mt-1 font-serif text-sm italic text-deep-brown/90 drop-shadow-md md:text-base"
         >
           S/O Mr. Durai Murugan &amp; Mrs. Kayalvizhi
         </motion.p>
