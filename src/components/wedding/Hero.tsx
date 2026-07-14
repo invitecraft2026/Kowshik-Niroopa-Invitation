@@ -43,10 +43,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.1 }}
-          className="inline-block rounded-full px-5 py-2 font-serif text-sm md:text-base tracking-[0.25em] uppercase text-deep-brown font-semibold backdrop-blur-sm"
+          className="font-serif text-sm md:text-base tracking-[0.25em] uppercase text-deep-brown font-semibold"
           style={{
-            background: "color-mix(in oklab, var(--warm-white, #fff) 55%, transparent)",
-            boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+            textShadow: "0 1px 3px rgba(255,255,255,0.6), 0 2px 8px rgba(255,255,255,0.4)",
           }}
         >
           We Are Getting Married
@@ -54,38 +53,13 @@ export function Hero() {
 
         <Ornament className="mx-auto mt-6 h-8 w-64 opacity-80" />
 
+        {/* Groom first */}
+        {/* Groom first */}
         <motion.h1
           initial={{ opacity: 0, letterSpacing: "0.5em", filter: "blur(30px)" }}
           animate={{ opacity: 1, letterSpacing: "0.02em", filter: "blur(0px)" }}
           transition={{ duration: 1.8, delay: 0.6, ease: [0.19, 1, 0.22, 1] }}
-          className="mt-6 font-serif text-[clamp(3rem,10vw,8rem)] leading-[0.95] text-deep-brown"
-        >
-          Niroopa
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.1, duration: 0.9 }}
-          className="mt-1 font-serif text-sm italic text-deep-brown/90 drop-shadow-md md:text-base"
-        >
-          D/O Mr. Vijayakumar &amp; Mrs. Sujatha
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5, rotate: -30 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 1.2, delay: 1.4, ease: [0.19, 1, 0.22, 1] }}
-          className="my-2 font-serif text-3xl italic text-gradient-gold md:text-4xl"
-        >
-          ♡
-        </motion.div>
-
-        <motion.h1
-          initial={{ opacity: 0, letterSpacing: "0.5em", filter: "blur(30px)" }}
-          animate={{ opacity: 1, letterSpacing: "0.02em", filter: "blur(0px)" }}
-          transition={{ duration: 1.8, delay: 0.9, ease: [0.19, 1, 0.22, 1] }}
-          className="font-serif text-[clamp(3rem,10vw,8rem)] leading-[0.95] text-deep-brown"
+          className="mt-6 font-script text-[clamp(3rem,9vw,6.5rem)] leading-[0.9] text-deep-brown"
         >
           Kowshik Raj
         </motion.h1>
@@ -93,12 +67,42 @@ export function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5, duration: 0.9 }}
-          className="mt-1 font-serif text-sm italic text-deep-brown/90 drop-shadow-md md:text-base"
+          transition={{ delay: 1.1, duration: 0.9 }}
+          className="mt-1 font-serif text-lg italic text-deep-brown/90 drop-shadow-md md:text-xl"
         >
           S/O Mr. Durai Murugan &amp; Mrs. Kayalvizhi
         </motion.p>
 
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5, rotate: -30 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ duration: 1.2, delay: 1.4, ease: [0.19, 1, 0.22, 1] }}
+          className="relative my-2 font-serif text-4xl italic text-deep-brown md:text-5xl"
+          style={{
+            textShadow: "0 2px 8px color-mix(in oklab, var(--deep-brown) 30%, transparent)",
+          }}
+        >
+          ♥
+        </motion.div>
+
+        {/* Bride second */}
+        <motion.h1
+          initial={{ opacity: 0, letterSpacing: "0.5em", filter: "blur(30px)" }}
+          animate={{ opacity: 1, letterSpacing: "0.02em", filter: "blur(0px)" }}
+          transition={{ duration: 1.8, delay: 0.9, ease: [0.19, 1, 0.22, 1] }}
+          className="font-script text-[clamp(3rem,9vw,6.5rem)] leading-[0.9] text-deep-brown"
+        >
+          Niroopa
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.5, duration: 0.9 }}
+          className="mt-1 font-serif text-lg italic text-deep-brown/90 drop-shadow-md md:text-xl"
+        >
+          D/O Mr. Vijayakumar &amp; Mrs. Sujatha
+        </motion.p>
         <Ornament className="mx-auto mt-8 h-8 w-64 opacity-80" />
 
         <motion.p

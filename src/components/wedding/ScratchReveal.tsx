@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Ornament } from "./Ornament";
-import coupleSecondary from "@/assets/image-1.jpeg";
+import coupleSecondary from "@/assets/image-new2.jpeg";
 
 const HEART_PATH =
   "M130,225 C130,225 20,145 20,80 C20,45 45,18 80,18 C102,18 120,32 130,50 C140,32 158,18 180,18 C215,18 240,45 240,80 C240,145 130,225 130,225 Z";
@@ -130,11 +130,12 @@ export function ScratchReveal() {
       {/* Soft couple photo backdrop */}
       <div className="pointer-events-none absolute inset-0">
         <img
-          src={coupleSecondary}
-          alt=""
-          aria-hidden="true"
-          className="h-full w-full object-cover opacity-[0.32]"
-        />
+  src={coupleSecondary}
+  alt=""
+  aria-hidden="true"
+  className="h-full w-full object-cover opacity-[0.32]"
+  style={{ objectPosition: "50% 10%" }}
+/>
         <div
           className="absolute inset-0"
           style={{
