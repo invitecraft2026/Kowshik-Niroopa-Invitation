@@ -19,7 +19,7 @@ export function OpeningExperience({ onComplete }: { onComplete: () => void }) {
     setPhase("video");
   }, []);
 
-  useEffect(() => {
+  useEffect(() => {   
     if (phase === "video" && videoRef.current) {
       const v = videoRef.current;
       v.currentTime = 0;
