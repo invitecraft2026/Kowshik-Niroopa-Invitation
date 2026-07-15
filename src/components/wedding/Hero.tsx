@@ -1,32 +1,50 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import heroEndFrame from "@/assets/end_frame.jpg"; // ← last frame of the opening video
+import { useEffect, useRef } from "react";
+import heroVideo from "@/assets/new-video.mp4";
 import { FloatingPetals } from "./FloatingPetals";
 import { Ornament } from "./Ornament";
 import { ChevronDown } from "lucide-react";
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.5; // slow motion
+    }
+  }, []);
 
   return (
     <section
       ref={ref}
       className="relative flex min-h-screen items-center justify-center overflow-hidden"
     >
-      <motion.div
-        style={{ y, scale, backgroundImage: `url(${heroEndFrame})` }}
-        className="absolute inset-0 bg-cover bg-center"
-      />
+      <motion.div style={{ y, scale }} className="absolute inset-0">
+        <video
+          ref={videoRef}
+          src={heroVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="h-full w-full object-cover"
+          style={{ filter: "blur(6px)" }}
+        />
+      </motion.div>
+
       <div
         className="absolute inset-0 bg-gradient-to-b
     from-white/25
     via-white/40
     to-warm-white/95"
       />
+
       <motion.div className="absolute inset-0" style={{ opacity }}>
         <div
           className="absolute inset-0"
@@ -36,6 +54,7 @@ export function Hero() {
           }}
         />
       </motion.div>
+
       <FloatingPetals count={24} />
 
       <motion.div style={{ opacity }} className="relative z-10 px-6 text-center">
@@ -53,7 +72,6 @@ export function Hero() {
 
         <Ornament className="mx-auto mt-6 h-8 w-64 opacity-80" />
 
-        {/* Groom first */}
         {/* Groom first */}
         <motion.h1
           initial={{ opacity: 0, letterSpacing: "0.5em", filter: "blur(30px)" }}
@@ -103,6 +121,7 @@ export function Hero() {
         >
           D/O Mr. Vijayakumar &amp; Mrs. Sujatha
         </motion.p>
+
         <Ornament className="mx-auto mt-8 h-8 w-64 opacity-80" />
 
         <motion.p

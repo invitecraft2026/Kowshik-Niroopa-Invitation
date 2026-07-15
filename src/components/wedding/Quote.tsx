@@ -38,7 +38,7 @@ export function Quote() {
           <br />
           <span className="text-gradient-gold">blessings and tradition.</span>&rdquo;
         </motion.p>
-        <motion.p
+        {/* <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -46,7 +46,7 @@ export function Quote() {
           className="mt-10 font-display text-[10px] tracking-[0.5em] text-rose-gold uppercase"
         >
           — Vivaha Mantra
-        </motion.p>
+        </motion.p> */}
       </div>
     </section>
   );

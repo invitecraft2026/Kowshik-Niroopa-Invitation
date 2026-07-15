@@ -1,6 +1,6 @@
 // src/components/wedding/ScratchReveal.tsx
-import { motion } from "framer-motion";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Ornament } from "./Ornament";
 import coupleSecondary from "@/assets/image-new2.jpeg";
 
@@ -10,6 +10,7 @@ const HEART_PATH =
 const HEART_W = 260;
 const HEART_H = 240;
 const REVEAL_THRESHOLD = 0.5;
+const PETAL_COUNT = 40;
 
 export function ScratchReveal() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -17,6 +18,22 @@ export function ScratchReveal() {
   const isDrawing = useRef(false);
   const [revealed, setRevealed] = useState(false);
   const [scratchedPct, setScratchedPct] = useState(0);
+
+  // Precompute randomized petal properties once, reused every time `revealed` flips true
+  const petals = useMemo(
+  () =>
+    Array.from({ length: PETAL_COUNT }).map((_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      delay: Math.random() * 1.2,
+      duration: 2.2 + Math.random() * 1.8,
+      size: 10 + Math.random() * 12,
+      rotate: Math.random() * 360,
+      drift: (Math.random() - 0.5) * 100,
+      emoji: ["🌸", "🌺", "🌼", "🌷"][Math.floor(Math.random() * 4)],
+    })),
+  []
+);
 
   const drawTexture = useCallback((ctx: CanvasRenderingContext2D) => {
     const { width, height } = ctx.canvas;
@@ -127,15 +144,14 @@ export function ScratchReveal() {
   return (
     <section className="relative overflow-hidden py-24">
       {/* Soft couple photo backdrop */}
-      {/* Soft couple photo backdrop */}
       <div className="pointer-events-none absolute inset-0">
         <img
-  src={coupleSecondary}
-  alt=""
-  aria-hidden="true"
-  className="h-full w-full object-cover opacity-[0.32]"
-  style={{ objectPosition: "50% 10%" }}
-/>
+          src={coupleSecondary}
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full object-cover opacity-[0.32]"
+          style={{ objectPosition: "50% 10%" }}
+        />
         <div
           className="absolute inset-0"
           style={{
@@ -144,6 +160,39 @@ export function ScratchReveal() {
           }}
         />
       </div>
+
+      {/* Falling petals — triggered on reveal */}
+      <AnimatePresence>
+        {revealed && (
+          <div className="pointer-events-none absolute inset-0 z-20 overflow-hidden">
+            {petals.map((p) => (
+              <motion.span
+                key={p.id}
+                initial={{ y: -40, x: 0, opacity: 0, rotate: 0 }}
+                animate={{
+                  y: "110vh",
+                  x: p.drift,
+                  opacity: [0, 1, 1, 0],
+                  rotate: p.rotate,
+                }}
+                transition={{
+                  duration: p.duration,
+                  delay: p.delay,
+                  ease: "easeIn",
+                }}
+                style={{
+                  position: "absolute",
+                  left: `${p.left}%`,
+                  top: 0,
+                  fontSize: p.size,
+                }}
+              >
+                {p.emoji}
+              </motion.span>
+            ))}
+          </div>
+        )}
+      </AnimatePresence>
 
       <div className="relative z-10 mx-auto flex max-w-md flex-col items-center px-6 text-center">
         <motion.p
@@ -177,8 +226,7 @@ export function ScratchReveal() {
           style={{
             width: HEART_W,
             height: HEART_H,
-            filter:
-              "drop-shadow(0 12px 24px color-mix(in oklab, var(--rose-gold) 35%, transparent))",
+            filter: "drop-shadow(0 12px 24px color-mix(in oklab, var(--rose-gold) 35%, transparent))",
           }}
         >
           <motion.div

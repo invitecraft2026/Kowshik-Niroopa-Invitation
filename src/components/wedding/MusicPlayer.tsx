@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { Music, VolumeX } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import backgroundMusic from "@/assets/i found you.mp3";
+import backgroundMusic from "@/assets/music.mp3";
 
 export function MusicPlayer({ autostart }: { autostart: boolean }) {
   const [on, setOn] = useState(false);

@@ -75,7 +75,7 @@ export function Venue() {
             </h3>
             <p className="text-deep-brown/75 leading-relaxed">
               SF No 108/2 and 108/3, Madurai Road, Kallikudi Village, South, Manikandam, Trichy –
-              620012. Ample parking, blessings at the entrance, and warm South Indian hospitality.
+              620012.
             </p>
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <a
