@@ -138,18 +138,23 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.4, duration: 1 }}
-        className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2 -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-2 text-deep-brown"
+          className="flex flex-col items-center gap-2"
         >
-          <span className="text-xs font-semibold tracking-[0.35em] uppercase drop-shadow-md">
+          <span
+            className="text-sm font-extrabold tracking-[0.4em] uppercase text-deep-brown"
+            style={{
+              textShadow: "0 2px 6px rgba(255,255,255,0.6)",
+            }}
+          >
             Scroll
           </span>
 
-          <ChevronDown className="h-6 w-6 drop-shadow-lg" strokeWidth={2.8} />
+          <ChevronDown className="h-7 w-7 text-deep-brown drop-shadow-xl" strokeWidth={3.5} />
         </motion.div>
       </motion.div>
     </section>
