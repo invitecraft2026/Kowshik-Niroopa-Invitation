@@ -78,7 +78,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "Celebrate our Engagement & Wedding — 6–7 September at Grand Empire Convention Hall, Trichy.",
+          "Celebrate our Engagement & Wedding — 6–7 September at Crystal Convention Centre, Trichy.",
       },
       {
         property: "og:image",
