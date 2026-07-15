@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Sparkles, Volume2, VolumeX } from "lucide-react";
 import coverImg from "@/assets/cover-image.png";
-import openingVideo from "@/assets/opening-video-2.mp4";
+import openingVideo from "@/assets/new-video3.mp4";
 import { FloatingPetals } from "./FloatingPetals";
 import { Ornament } from "./Ornament";
 

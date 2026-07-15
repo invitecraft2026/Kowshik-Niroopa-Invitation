@@ -2,7 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 import coverImg from "@/assets/cover-image.png";
-import openingVideo from "@/assets/opening-video-2.mp4";
+import openingVideo from "@/assets/new-video3.mp4";
 import heroEndFrame from "@/assets/end_frame.jpg";
 
 type Phase = "cover" | "video" | "exiting";
