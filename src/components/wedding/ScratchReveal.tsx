@@ -238,7 +238,7 @@ export function ScratchReveal() {
             animate={revealed ? { scale: [1, 1.04, 1] } : {}}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <span className="mt-2 font-serif text-2xl text-deep-brown">6 &amp; 7</span>
+            <span className="mt-2 font-serif text-2xl text-deep-brown">7</span>
             <span className="font-serif text-lg italic text-deep-brown/80">September 2026</span>
           </motion.div>
 

@@ -5,14 +5,7 @@ import coupleEvents from "@/assets/couple-events.jpg";
 
 const events = [
   {
-    tag: "Ceremony I",
-    title: "Engagement",
-    date: "Sunday · 6 September 2026",
-    time: "7pm - onwards",
-    location: "Crystal Convention Centre, Trichy",
-  },
-  {
-    tag: "Ceremony II",
+    tag: "Wedding Ceremony",
     title: "Marriage",
     date: "Monday · 7 September 2026",
     time: "Mugurtham · 9:00 – 10:30 AM",

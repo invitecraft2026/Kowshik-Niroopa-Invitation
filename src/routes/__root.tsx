@@ -67,7 +67,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Together with their families, Kowshik Raj & Niroopa Vijayakumar invite you to celebrate their engagement and wedding on 6–7 September in Trichy.",
+          "Together with their families, Kowshik Raj & Niroopa Vijayakumar invite you to celebrate their  wedding on 6–7 September in Trichy.",
       },
 
       // Open Graph
@@ -78,7 +78,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "Celebrate our Engagement & Wedding — 6–7 September at Crystal Convention Centre, Trichy.",
+          "Celebrate our Wedding — 6–7 September at Crystal Convention Centre, Trichy.",
       },
       {
         property: "og:image",
@@ -112,7 +112,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       {
         name: "twitter:description",
-        content: "Celebrate our Engagement & Wedding — 6–7 September in Trichy.",
+        content: "Celebrate our Wedding — 6–7 September in Trichy.",
       },
       {
         name: "twitter:image",

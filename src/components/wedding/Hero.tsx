@@ -130,7 +130,7 @@ export function Hero() {
           transition={{ delay: 1.8, duration: 1 }}
           className="mt-8 font-serif text-xl italic text-deep-brown drop-shadow-lg md:text-2xl"
         >
-          Two souls · One celebration · Engagement &amp; Wedding
+          Two souls · One celebration · Wedding
         </motion.p>
       </motion.div>
 
@@ -138,15 +138,18 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.4, duration: 1 }}
-        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-deep-brown/60"
+        className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2 -translate-x-1/2"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-2"
+          className="flex flex-col items-center gap-2 text-deep-brown"
         >
-          <span className="text-[10px] tracking-[0.4em] uppercase">Scroll</span>
-          <ChevronDown className="h-4 w-4" />
+          <span className="text-xs font-semibold tracking-[0.35em] uppercase drop-shadow-md">
+            Scroll
+          </span>
+
+          <ChevronDown className="h-6 w-6 drop-shadow-lg" strokeWidth={2.8} />
         </motion.div>
       </motion.div>
     </section>
