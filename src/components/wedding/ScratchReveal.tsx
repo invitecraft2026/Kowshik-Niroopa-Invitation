@@ -21,19 +21,19 @@ export function ScratchReveal() {
 
   // Precompute randomized petal properties once, reused every time `revealed` flips true
   const petals = useMemo(
-  () =>
-    Array.from({ length: PETAL_COUNT }).map((_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      delay: Math.random() * 1.2,
-      duration: 2.2 + Math.random() * 1.8,
-      size: 10 + Math.random() * 12,
-      rotate: Math.random() * 360,
-      drift: (Math.random() - 0.5) * 100,
-      emoji: ["🌸", "🌺", "🌼", "🌷"][Math.floor(Math.random() * 4)],
-    })),
-  []
-);
+    () =>
+      Array.from({ length: PETAL_COUNT }).map((_, i) => ({
+        id: i,
+        left: Math.random() * 100,
+        delay: Math.random() * 1.2,
+        duration: 2.2 + Math.random() * 1.8,
+        size: 10 + Math.random() * 12,
+        rotate: Math.random() * 360,
+        drift: (Math.random() - 0.5) * 100,
+        emoji: ["🌸", "🌺", "🌼", "🌷"][Math.floor(Math.random() * 4)],
+      })),
+    [],
+  );
 
   const drawTexture = useCallback((ctx: CanvasRenderingContext2D) => {
     const { width, height } = ctx.canvas;
@@ -226,7 +226,8 @@ export function ScratchReveal() {
           style={{
             width: HEART_W,
             height: HEART_H,
-            filter: "drop-shadow(0 12px 24px color-mix(in oklab, var(--rose-gold) 35%, transparent))",
+            filter:
+              "drop-shadow(0 12px 24px color-mix(in oklab, var(--rose-gold) 35%, transparent))",
           }}
         >
           <motion.div
@@ -238,8 +239,10 @@ export function ScratchReveal() {
             animate={revealed ? { scale: [1, 1.04, 1] } : {}}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <span className="mt-2 font-serif text-2xl text-deep-brown">7</span>
-            <span className="font-serif text-lg italic text-deep-brown/80">September 2026</span>
+            <span className="mt-2 font-serif text-3xl font-bold text-deep-brown">7</span>
+            <span className="font-serif text-xl italic font-bold text-deep-brown">
+              September 2026
+            </span>
           </motion.div>
 
           <motion.canvas
